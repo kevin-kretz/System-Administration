@@ -1,1 +1,1 @@
-Run the powershell script, choose option 5, then option 1.
+Run the powershell script as administrator, choose option 5, then option 1.
