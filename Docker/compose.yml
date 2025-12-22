@@ -1,0 +1,177 @@
+name: Homelab
+
+x-service-defaults:
+  &default-settings
+  networks:
+    - homelab
+  restart: unless-stopped
+
+services:
+  actualbudget:
+    container_name: actual-budget
+    hostname: actualbudget
+    image: actualbudget/actual-server:latest
+    volumes:
+      - type: bind
+        source: S:\Docker\actual-budget\data
+        target: /data
+    <<: *default-settings
+
+  aliasvault:
+    image: ghcr.io/aliasvault/aliasvault:latest
+    container_name: alias-vault
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "25:25"
+      - "587:587"
+    volumes:
+      - ./database:/database
+      - ./logs:/logs
+      - ./secrets:/secrets
+    env_file: ./alias-vault/alias-vault.env
+    <<: *default-settings
+
+  cloudflare:
+    container_name: cloudflare
+    image: cloudflare/cloudflared:latest
+    command: tunnel run
+    env_file:
+      - ./cloudflared/cloudflare.env
+    <<: *default-settings
+
+  homeassistant:
+    container_name: home-assistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    volumes:
+      - /homeassistant/config:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+    environment:
+      TZ: America/New_York
+    
+
+  jellyfin:
+    container_name: jellyfin
+    hostname: jellyfin
+    image: jellyfin/jellyfin:latest
+    ports:
+      - 8096:8096
+    volumes:
+      - type: bind
+        source: S:\Docker\jellyfin\cache
+        target: /cache
+      - type: bind
+        source: S:\Docker\jellyfin\config
+        target: /config
+      - type: bind
+        source: D:\Videos\Movies
+        target: /movies
+      - type: bind
+        source: D:\Videos\TV
+        target: /tv
+      - type: bind
+        source: D:\Music
+        target: /music
+    <<: *default-settings
+  
+  livebook:
+    container_name: livebook
+    image: ghcr.io/livebook-dev/livebook
+    volumes:
+      - ./livebook/data:/data
+    env_file:
+      - ./livebook/livebook.env
+    <<: *default-settings
+
+  mealie:
+    image: ghcr.io/mealie-recipes/mealie:latest
+    container_name: mealie
+    restart: unless-stopped
+    env_file:
+      - ./mealie/mealie.env
+    volumes:
+      - ./mealie/data:/app/data/
+    <<: *default-settings
+
+  minecraft-server:
+    container_name: minecraft
+    image: itzg/minecraft-server:java25
+    tty: true
+    stdin_open: true
+    ports:
+      - 25565:25565
+    volumes:
+      - ./minecraft/data:/data
+    env_file:
+      - ./minecraft/minecraft.env
+    <<: *default-settings
+
+  obsidian:
+    container_name: obsidian
+    image: lscr.io/linuxserver/obsidian:latest
+    env_file:
+      - ./obsidian/obsidian.env
+    volumes:
+      - ./obsidian/config:/config
+    shm_size: "1gb"
+    <<: *default-settings
+
+  plex:
+    container_name: plex
+    hostname: plex
+    image: plexinc/pms-docker:latest
+    ports:
+      - 51000:32400
+      - 51001:1900
+      - 51002:5353
+      - 51003:8324
+      - 51004:32410
+      - 51005:32412
+      - 51006:32413
+      - 51007:32414
+      - 51008:32469
+    volumes:
+      - type: bind
+        source: D:\Videos\Movies
+        target: /movies
+      - type: bind
+        source: D:\Videos\TV
+        target: /tv
+      - type: bind
+        source: D:\Music
+        target: /music
+    env_file:
+      - ./plex/plex.env
+    <<: *default-settings
+
+  traefik:
+    image: traefik:3.5
+    ports:
+      - "50000:80"
+      - "50001:8080"
+      - "50002:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./config/traefik.yml:/etc/traefik/traefik.yml:ro
+    <<: *default-settings
+
+  vaultwarden:
+    container_name: vaultwarden
+    hostname: vaultwarden
+    image: vaultwarden/server:latest
+    volumes:
+      - type: bind
+        source: ./vaultwarden/data
+        target: /data/
+    env_file:
+      - ./vaultwarden/vaultwarden.env
+    <<: *default-settings
+
+networks:
+  homelab:
+    external: true
