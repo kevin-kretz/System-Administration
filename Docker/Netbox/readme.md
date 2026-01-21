@@ -6,10 +6,12 @@ https://youtu.be/dDYNu58YR6M?t=707
 
 ### Set up docker
 
-`git clone -b release https://github.com/netbox-community/netbox-docker.git`
-`cd ./netbox-docker.git`
-`cp docker-compose.override.yml.example docker-compose.override.yml` 
-`vi docker-compose.override.yml`
+``` bash
+git clone -b release https://github.com/netbox-community/netbox-docker.git
+cd ./netbox-docker.git
+cp docker-compose.override.yml.example docker-compose.override.yml
+vi docker-compose.override.yml
+```
 
 #### docker-compose.override.yml
 ``` 
