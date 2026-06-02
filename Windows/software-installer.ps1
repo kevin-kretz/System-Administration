@@ -1,5 +1,4 @@
 winget install --force `
-  TheBrowserCompany.Arc `
   Discord.Discord `
   Docker.DockerDesktop `
   Git.Git `
