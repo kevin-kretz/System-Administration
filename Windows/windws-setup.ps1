@@ -1,3 +1,5 @@
+# Open PowerShell as administrator
+
 # Configure IP
 Set-NetIPInterface -InterfaceAlias "Ethernet" -Dhcp Disabled
 New-NetIPAddress -InterfaceAlias "Ethernet" -IPAddress 10.0.1.1 -PrefixLength 22 -DefaultGateway 10.0.0.1
@@ -32,7 +34,6 @@ wsl --install
 wsl --update
 wsl --install FedoraLinux-43
 
-
 # Remove desktop shortcuts
 $DesktopPaths = [Environment]::GetFolderPath("Desktop"), [Environment]::GetFolderPath("CommonDesktopDirectory")
 Get-ChildItem -Path $DesktopPaths -Include *.lnk, *.url -Recurse -Force | Remove-Item
@@ -50,3 +51,6 @@ winget install --force --silent`
 # Configure Git
 git config --global user.name "Kevin Kretz"
 git config --global user.email "kkretz17@gmail.com"
+
+# Disable services
+Get-Service -Name "BTAGService", "bthserv", "MapsBroker", "lfsvc", "lltdsvc", "MSiSCSI", "wercplsupport", "LanmanServer", "WerSvc", "Wecsvc", "icssvc" | Set-Service -StartupType Disabled
