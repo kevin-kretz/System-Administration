@@ -46,3 +46,7 @@ winget install --force --silent`
   "Start Experiences App" `
   "Mail and Calendar" `
   "Microsoft 365 Copilot"
+
+# Configure Git
+git config --global user.name "Kevin Kretz"
+git config --global user.email "kkretz17@gmail.com"
