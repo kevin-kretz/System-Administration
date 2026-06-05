@@ -1,3 +1,8 @@
+# Configure IP
+Set-NetIPInterface -InterfaceAlias "Ethernet" -Dhcp Disabled
+New-NetIPAddress -InterfaceAlias "Ethernet" -IPAddress 10.0.1.1 -PrefixLength 22 -DefaultGateway 10.0.0.1
+Set-DnsClientServerAddress -InterfaceAlias "Ethernet" -ServerAddresses ("10.0.0.1")
+
 # If winget not installed
 # Win + R
 # ms-windows-store://pdp?&productid=9nblggh4nns1
