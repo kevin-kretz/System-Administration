@@ -14,7 +14,8 @@ winget install --force `
   JetBrains.WebStorm `
   qBittorrent.qBittorrent `
   Microsoft.VisualStudioCode `
-  Brave.Brave
+  Brave.Brave'
+  Logitech.GHUB
 
 # Remove desktop shortcuts
 $DesktopPaths = [Environment]::GetFolderPath("Desktop"), [Environment]::GetFolderPath("CommonDesktopDirectory")
