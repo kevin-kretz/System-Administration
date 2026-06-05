@@ -25,6 +25,7 @@ winget install --force `
   Microsoft.VisualStudioCode `
   Brave.Brave `
   Logitech.GHUB `
+  "Python3" `
 
 winget install --id 9PFHDD62MXS1 --source msstore # Apple Music
 winget install --id 9N0DX20HK701 --source msstore # Microsoft Terminal
