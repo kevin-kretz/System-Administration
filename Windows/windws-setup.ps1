@@ -19,9 +19,15 @@ winget install --force `
   Brave.Brave'
   Logitech.GHUB
 
-wsl --update
 winget install --id 9PFHDD62MXS1 --source msstore # Apple Music
 winget install --id 9N0DX20HK701 --source msstore # Microsoft Terminal
+
+# wsl
+wsl --install
+wsl --update
+wsl --install FedoraLinux-43
+
+
 # Remove desktop shortcuts
 $DesktopPaths = [Environment]::GetFolderPath("Desktop"), [Environment]::GetFolderPath("CommonDesktopDirectory")
 Get-ChildItem -Path $DesktopPaths -Include *.lnk, *.url -Recurse -Force | Remove-Item
