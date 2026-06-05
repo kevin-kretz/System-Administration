@@ -2,7 +2,9 @@
 # Win + R
 # ms-windows-store://pdp?&productid=9nblggh4nns1
 
+# install software
 winget install --force `
+  Microsoft.Powershell `
   Discord.Discord `
   Docker.DockerDesktop `
   Git.Git `
@@ -17,6 +19,9 @@ winget install --force `
   Brave.Brave'
   Logitech.GHUB
 
+wsl --update
+winget install --id 9PFHDD62MXS1 --source msstore # Apple Music
+winget install --id 9N0DX20HK701 --source msstore # Microsoft Terminal
 # Remove desktop shortcuts
 $DesktopPaths = [Environment]::GetFolderPath("Desktop"), [Environment]::GetFolderPath("CommonDesktopDirectory")
 Get-ChildItem -Path $DesktopPaths -Include *.lnk, *.url -Recurse -Force | Remove-Item
@@ -30,3 +35,5 @@ winget install --force --silent`
   "Start Experiences App" `
   "Mail and Calendar" `
   "Microsoft 365 Copilot"
+
+# Remove apps from running on startup
