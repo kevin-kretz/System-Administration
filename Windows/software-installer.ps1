@@ -13,6 +13,9 @@ winget install --force `
   Valve.Steam `
   JetBrains.WebStorm `
   qBittorrent.qBittorrent `
-  Plex.PlexMediaServer `
   Microsoft.VisualStudioCode `
   Brave.Brave
+
+# Remove desktop shortcuts
+$DesktopPaths = [Environment]::GetFolderPath("Desktop"), [Environment]::GetFolderPath("CommonDesktopDirectory")
+Get-ChildItem -Path $DesktopPaths -Include *.lnk, *.url -Recurse -Force | Remove-Item
