@@ -1,6 +1,6 @@
 # If winget not installed
-Win + R
-ms-windows-store://pdp?&productid=9nblggh4nns1
+# Win + R
+# ms-windows-store://pdp?&productid=9nblggh4nns1
 
 winget install --force `
   Discord.Discord `
@@ -29,5 +29,3 @@ winget install --force --silent`
   "Start Experiences App" `
   "Mail and Calendar" `
   "Microsoft 365 Copilot"
-
-Reconfigure start menu pins
