@@ -14,4 +14,5 @@ winget install --force `
   JetBrains.WebStorm `
   qBittorrent.qBittorrent `
   Plex.PlexMediaServer `
-  Microsoft.VisualStudioCode
+  Microsoft.VisualStudioCode `
+  Brave.Brave
