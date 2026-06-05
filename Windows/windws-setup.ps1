@@ -21,8 +21,8 @@ winget install --force `
   JetBrains.WebStorm `
   qBittorrent.qBittorrent `
   Microsoft.VisualStudioCode `
-  Brave.Brave'
-  Logitech.GHUB
+  Brave.Brave `
+  Logitech.GHUB `
 
 winget install --id 9PFHDD62MXS1 --source msstore # Apple Music
 winget install --id 9N0DX20HK701 --source msstore # Microsoft Terminal
@@ -46,5 +46,3 @@ winget install --force --silent`
   "Start Experiences App" `
   "Mail and Calendar" `
   "Microsoft 365 Copilot"
-
-# Remove apps from running on startup
