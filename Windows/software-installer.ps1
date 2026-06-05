@@ -1,5 +1,6 @@
 # If winget not installed
-`Win + R` -> ms-windows-store://pdp?&productid=9nblggh4nns1
+# Win + R
+# ms-windows-store://pdp?&productid=9nblggh4nns1
 
 winget install --force `
   Discord.Discord `
