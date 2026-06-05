@@ -1,3 +1,6 @@
+# If winget not installed
+`Win + R` -> ms-windows-store://pdp?&productid=9nblggh4nns1
+
 winget install --force `
   Discord.Discord `
   Docker.DockerDesktop `
@@ -5,9 +8,9 @@ winget install --force `
   Google.Chrome.EXE `
   Microsoft.PowerToys `
   Mozilla.Firefox `
-  "Riot Game valorant.live" `
+  RiotGames.Valorant.NA `
   Valve.Steam `
   JetBrains.WebStorm `
-  qBittorrent `
+  qBittorrent.qBittorrent `
   Plex.PlexMediaServer `
   Microsoft.VisualStudioCode
